@@ -1,4 +1,4 @@
-## Little script to have a repository ready for work
+# Little script to have a repository ready for work
 
 - Check current status
 - Reset changes and move you to master
@@ -7,7 +7,7 @@
   
 This is used locally for work propouse. 
 
-# How to configure: 
+## How to configure: 
 
 • Set `repoPath` with your repository.
 
@@ -23,5 +23,9 @@ const buildScrips = [
   {command: "yarn", flags: ["test", "-u"]}
 ]
 ```
+
+## How to run: 
+
+`node hello-script.js` 
 
 Alll suggestions are very welcome =]
