@@ -18,10 +18,9 @@ Example:
 
 ```
 const buildScrips = [
-  {command: "yarn", flag: ""},
-  {command: "yarn", flag: "lint:quick:fix"}
+  {command: "yarn", flags: [""]},
+  {command: "yarn", flags: ["test", "-u"]}
 ]
 ```
-Need to accept mre than 1 flag per command.
 
 Alll suggestions are very welcome =]

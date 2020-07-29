@@ -27,16 +27,25 @@ const thumb = String.fromCodePoint("0x1F44D")
  * Path to the repo that you want to run updates.
  */
 
-const repoPath = ""
+const repoPath = "/Users/<username>/Projects/<my-repo>/"
 
 /**
- * Script that you want to run after updating [yarn | bundle install | yarn start | bin/setup --reset].
+ * Script that you want to run after updating.
+ * Accept array of flags 
  * Need to be in order
+ * 
+ * Example:
+ * 
+ * const buildScrips = [
+ *   {command: "yarn", flags: [""]},
+ *   {command: "yarn", flags: ["test", "-u"]}
+ * ]
+ * 
  */
 
 const buildScrips = [
-  {command: "", flag: ""},
-  {command: "", flag: ""}
+  {command: "", flags: [""]},
+  {command: "", flags: ["", ""]}
 ]
 
 /**
@@ -49,7 +58,7 @@ async function prepareToWork() {
   const currentStatus = await getCurrentStatus()
 
   if (currentStatus === 0 ) {
-      console.log(`${thumb} Status clean, moving to master\n\n`)
+      console.log(`\n${thumb} Status clean, moving to master\n\n`)
       const currentBranch = await getCurrentBranch()
 
       var masterPulled = 1 
@@ -70,7 +79,7 @@ async function prepareToWork() {
       }
 
   } else {
-     console.log(`${question} Status dirty, need to reset before moving master\n\n`)
+     console.log(`\n${question} Status dirty, need to reset before moving master\n\n`)
      var answer = "no"
 
      await rl.question(
@@ -98,15 +107,14 @@ async function prepareToWork() {
 }
 
 async function runScript(script) {
-    console.log(`${running} Running ${script.command} ${script.flag}`)
-    const childProcess = await spawnSync(script.command, [script.flag], {cwd: repoPath, stdio: 'inherit' })
+    console.log(`${running} Running ${script.command} with flags ${script.flags}`)
+    const childProcess = await spawnSync(script.command, script.flags, {cwd: repoPath, stdio: 'inherit' })
     return childProcess
 }
 
 /**
  * Run repo scipts
  */
-
 
 async function runRepoScripts() {
   console.log(`${running} Running scripts ..\n\n`)
@@ -165,7 +173,6 @@ async function checkoutMaster() {
     exit(1)
   }
 }
-
 
 /**
  * Get Current branch of repo
