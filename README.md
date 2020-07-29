@@ -10,6 +10,7 @@ This is used locally for work propouse.
 # How to configure: 
 
 • Set `repoPath` with your repository.
+
 • Set `buildScrips` with different scripts you want to run. Will run in order. 
 
 Example:
