@@ -19,7 +19,7 @@ Example:
 
 ```
 const buildScrips = [
-  {command: "yarn", flags: [""]},
+  {command: "yarn", flags: []},
   {command: "yarn", flags: ["test", "-u"]}
 ]
 ```
