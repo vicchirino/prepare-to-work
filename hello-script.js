@@ -44,8 +44,7 @@ const repoPath = "/Users/<username>/Projects/<my-repo>/"
  */
 
 const buildScrips = [
-  {command: "", flags: [""]},
-  {command: "", flags: ["", ""]}
+  {command: "", flags: []},
 ]
 
 /**
